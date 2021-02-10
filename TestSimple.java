@@ -1,5 +1,6 @@
+package experiments;
 
-import static kunit1.KUnit.*;
+import static KUnit.KUnit.*;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -7,33 +8,36 @@ import java.sql.SQLException;
 
 public class TestSimple {
 
-  public static void main(String[] args) throws IOException, SQLException
-  {
-    Record K = new Record(15, 24);
-    
-    checkEqualFloat(K.getTodaySales(), 15);
-    checkEqualFloat(K.getYesterdaySales(), 24);
-    checkNotEqualFloat(K.getYesterdaySales(), 15);    
-    checkNotEqualFloat(K.getYesterdaySales(), 24);    
-    
-    field fields = null;
-    try
-    (
-    	fields = K.getClass().getDeclaredField("YesterdaySales");
-  }catch(NoSuchFieldException | SecurityException e )
-  
-  {
-	  e.printStckTrace();
-  }
-  try {
-	  checkEqualFloat(fields.getFloat(K),24);
-  }catch(IllegalArgumenException | IllegalAccessException e)
-  
-  {
-	  e.printStackTrace();
-  }
+	public static void main(String[] args) throws IOException, SQLException
+	{
+		// TODO Auto-generated method stub
+		Simple s = new Simple(10, 25);
+		
+		checkEquals(s.getf1(),10);
+		checkEquals(s.getf2(),25);
+		checkNotEquals(s.getf1(),10);    
+		checkNotEquals(s.getf1(),25);    
 
-  	Testreport()
-  }
+		Field field = null;
+		try
+		{
+			field = s.getClass().getDeclaredField("f1");
+		}catch(NoSuchFieldException | SecurityException e)
+		{
+			e.printStackTrace();
+		}
+		
+		field.setAccessible(true);
+		try
+		{
+			checkEquals(field.getFloat(s),25);
+		}catch(IllegalArgumentException | IllegalAccessException e)
+		{
+			e.printStackTrace();
+		}
+		
+		report();
+	}
 }
+
 
