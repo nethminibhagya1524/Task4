@@ -11,6 +11,6 @@ public class Reflection06 {
     for (Field f : fields) {
       System.out.printf("field name=%s type=%s accessible=%s\n", f.getName(),
           f.getType(), f.isAccessible());
-    }
+     }
   }
 }
