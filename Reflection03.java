@@ -6,4 +6,4 @@ public class Reflection03 {
 		System.out.println("class = " + k.getClass());
 		System.out.println("class name = " + k.getClass().getName());
 	}
-}
+ }
